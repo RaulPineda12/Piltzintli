@@ -1,0 +1,52 @@
+<br>
+<div class="container animate__animated animate__rotateInDownLeft">
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <!-- Boton para agregar tema -->
+        <button type="button" class="buttonPerron" routerLink='/nuevo-tema' [disabled]="!logeado">
+            Add Topic or Question
+        </button>
+        <h4 style="text-align: center;" *ngIf="!logeado"><strong> You need to be logged in order to create
+            a new topic or question</strong>
+           <br> <a routerLink='/login'><u> click to Log In</u></a>
+        </h4>
+    </div>
+    <div *ngIf="logeado && this.tipo_usuario['tipo'] == 'usuario'" class="container">
+        <h5 style="text-align: center;"><strong>To enable Delete and Edit button you need to be log in as Administrator</strong></h5>
+    </div>
+
+    <br>
+    <!--Cards-->
+    <div class="w-100">
+        <div class="row g-3 mb-3" *ngFor="let tema of this.temas">
+            <div class="col-md-3">
+                <img src="https://api-piltzintli.azurewebsites.net/{{tema.img.split('/')[2]}}"
+                    class="img-fluid border border-4 rounded-circle img-thumbnail img-card"
+                    onerror="this.src='../../../assets/images/no_image.png'">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title encabezado">{{tema.titulo}}</h5>
+                    <p class="card-text" style="text-align: justify;">{{tema.texto}}</p>
+                    <p class="card-text"><small class="text-muted">Created on: {{tema.createdAt | date:'dd/MM/yyyy h:mm:ss a'}}</small></p>
+                    <p class="card-text"><small class="text-muted">Last modification: {{tema.updatedAt | date:'dd/MM/yyyy h:mm:ss a'}}</small></p>
+                    <p class="card-text"><u class="text-muted">Created by: {{tema.usuario}}</u></p>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="button" class="btn btn-primary me-md-2" [disabled]="!logeado">Reply</button>
+                    <button *ngIf="logeado" [disabled]="this.tipo_usuario['tipo']=='usuario'" type="button" class="btn btn-danger me-md-2"
+                        (click)="eliminar(tema)">Delete</button>
+                    <button *ngIf="logeado" [disabled]="this.tipo_usuario['tipo']=='usuario'" type="button" class="btn btn-success me-md-2"
+                        routerLink="/editar-tema/{{tema._id}}">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="this.temas==''">
+        <div class="col"></div>
+        <div class="col">
+            <h2 style="color: #476F80; text-align: center; padding-top: 2em;">THERE ARE NO QUESTIONS OR TOPICS</h2>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+<br>

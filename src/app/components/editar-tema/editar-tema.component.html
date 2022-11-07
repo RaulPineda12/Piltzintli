@@ -1,0 +1,30 @@
+<br>
+<br>
+<div class="container animate__animated animate__rollIn">
+
+    <form [formGroup]='form' (ngSubmit)='actualizar()'>
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Titulo ó Pregunta</label>
+            <input type="text" class="form-control" [ngModel]="tema.titulo" id="titulo"  formControlName='titulo'>
+            <div class="form-text">Insertar el titulo o la pregunta del nuevo tema a discusión</div>
+        </div>
+        <div class="mb-3">
+            <label for="texto" class="form-label">Texto</label>
+            <textarea rows=8 class="form-control" placeholder="Ingrese su texto" [ngModel]="tema.texto" id="texto" formControlName='texto'></textarea>
+            <div class="form-text">Insertar el texto del tema</div>
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Seleccione una imagen <strong> (This option is currently disabled)</strong></label>
+            <input disabled class="form-control" type="file" id="formFile" accept="image/*"  (change)='cambio_archivo($event)' 
+            formControlName="img">  
+            <br>
+            <img *ngIf="this.tema.img!=null" src="https://api-piltzintli.azurewebsites.net/{{this. tema.img}}" class="card-img-top" alt="..." 
+            onerror="this.src='../../../assets/images/no_image.png'" style="max-width: 20em; max-height: 20em;">
+        </div>
+        <div class="d-grid gap-4 d-md-flex justify-content-md-center">
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid ">Actualizar Tema</button>
+            <button type="button" class="btn btn-danger" routerLink='/foro'>Cancelar</button>
+        </div>
+    </form>
+</div>
+<br><br>

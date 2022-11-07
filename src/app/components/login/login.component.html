@@ -1,0 +1,72 @@
+<br>
+<!--el login viene de la poagina: https://codepen.io/danzawadzki/pen/EgqKRr/-->
+<!--https://www.templatemonster.com/blog/es/100-formularios-html5-css3-gratis-de-registro-ininio-de-sesion/-->
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active underlineHover" id="signin"  (click)="cambio_1()"> Sign In</h2>
+      <h2 class="inactive underlineHover" id="signup" (click)="cambio_2()">Sign Up </h2>
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="../../../assets/piltzintli-logo.png" id="icon" alt="User Icon" />
+      </div>
+  
+      <!-- Login Form  -->
+      <form *ngIf='status'>
+        <p class="text-center">Email for <strong>Administator</strong>: raul@gmail.com</p>
+        <input type="email" id="login" class="fadeIn second" name="login" placeholder="Email" name="email" [(ngModel)]="email" (blur)="validar_email()">
+        <p class="text-center">Password for <strong>Administator</strong>: hola</p>
+        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password" name="pass" [(ngModel)]="pass">
+        <div class="alert alert-danger my-1" role="alert" *ngIf="err_ingreso">
+          Email y/o Contraseña invalidos.
+        </div>
+        <div class="alert alert-danger my-1" role="alert" *ngIf="email_valido">
+          Ingrese un email valido.
+        </div>
+        <div class="alert alert-success my-1" role="alert" *ngIf="ingreso">
+          Ingreso Valido
+        </div>
+        <input type="submit" class="fadeIn fourth" value="Log In" [disabled]="email==''||pass==''" (click)="ingresar()"> 
+      </form> 
+
+      <!-- Sign Up Form  -->
+      <form *ngIf="!status">
+        <input type="email" class="fadeIn second" placeholder="Email" name="nv_email" [(ngModel)]="nv_email" (blur)="validar_email2()">
+        <div class="alert alert-danger my-2" role="alert" *ngIf="err_nv_email">
+          El email ya esta registrado
+        </div>
+        <div class="alert alert-danger my-1" role="alert" *ngIf="email_valido2">
+          Ingrese un email valido.
+        </div>
+        <input type="text" class="fadeIn third" placeholder="User name" name="nv_user" minlength="5" [(ngModel)]="nv_user">
+        <div class="alert alert-danger my-2" role="alert" *ngIf="err_nv_usr">
+          Usuario existente
+        </div>
+        <input type="password" class="fadeIn third" placeholder="Password" name="nv_pass" [(ngModel)]="nv_pass">
+        <input type="text" class="fadeIn third" placeholder="First and Last name" name="nv_nom" [(ngModel)]="nv_nom">        
+
+        <input type="text" class="fadeIn third" list="browsers" name="browser" id="browser" placeholder="Gender" [(ngModel)]="nv_sex">
+        <datalist id="browsers">
+          <option value="Femenino">
+          <option value="Masculino">
+        </datalist>
+
+
+        <input type="number" class="fadeIn third" placeholder="Age" name="nv_edad" [(ngModel)]="nv_edad">
+        <div class="alert alert-success my-1" role="alert" *ngIf="registro">
+          Registro Valido
+        </div>
+        <input type="submit" class="fadeIn fourth" value="Log In" [disabled]="nv_email==''||nv_user==''||nv_pass==''||nv_nom==''||nv_sex==''||nv_edad==null" 
+          (click)="registrar()"> 
+      </form> 
+
+  
+      <!-- Remind Passowrd 
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div> -->
+  
+    </div>
+  </div>
+  <br>

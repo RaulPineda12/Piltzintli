@@ -1,0 +1,49 @@
+<!--fixed-top, esta propiedad dentro del navbar hace que el navbar se quede fijo-->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #b0d7f3c5;">
+  <div class="container-fluid">
+    <a class="navbar-brand zoom-box" routerLink='/home'>
+      <img style="border-radius: 100%; width: 3em; height: 3em;" src="../../../assets/piltzintli_logo.jpg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+    <span style="font-family: sans-serif; font-weight:bold; margin-left: 0.2em;">Piltzintli</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link zoom-box"  aria-current="page" style="font-weight: bolder;" routerLink='/intro'>Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a style="font-weight: bolder;" class="nav-link dropdown-toggle zoom-box" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Know Us
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink='/conocenos' >Mision</a></li>
+            <li><a class="dropdown-item" routerLink='/conocenos' >Vision</a></li>
+            <li><a class="dropdown-item" routerLink='/conocenos' >Targets</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item zoom-box" routerLink='/contacto'>Contact</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link zoom-box" routerLink='/eventos' style="font-weight: bolder;">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link zoom-box" routerLink='/foro' style="font-weight: bolder;">Forum</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link zoom-box" routerLink='/noticias' *ngIf="logeado && tipo=='admin'">Configuración</a>
+        </li>
+        <li class="nav-item" *ngIf="logeado==false">
+          <a class="nav-link zoom-box" routerLink='/login'>Log in</a>
+        </li>
+      </ul>
+      <form class="d-flex" *ngIf="logeado==true">
+        <button type="button" class="button-21 zoom-box" (click)="salir()">Log out</button>
+        <!--
+        <input  class="form-control me-4" type="search" placeholder="Search" aria-label="Search">
+        <button  class="btn btn-outline-primary" type="submit">Buscar</button> -->
+      </form>
+    </div>
+  </div>
+</nav>

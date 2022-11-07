@@ -1,0 +1,32 @@
+<br>
+<div class="container animate__animated animate__rollIn">
+
+    <form [formGroup]='form' (ngSubmit)='actualizar()'>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre del Evento</label>
+            <input type="text" class="form-control" id="nombre" [ngModel]="evento.nombre"  formControlName='nombre'>
+        </div>
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción Del Evento</label>
+            <textarea rows=5 class="form-control" placeholder="Ingrese Descripción" [ngModel]="evento.descripcion" id="descripcion" formControlName='descripcion'></textarea>
+            <div class="form-text">Inserte la descripción del evento</div>
+        </div>
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha y Hora Del Evento</label>
+            <input type="datetime-local" class="form-control" [ngModel]="evento.fecha" id="fecha" formControlName='fecha'>
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Seleccione una imagen<strong> (This option is currently disabled)</strong></label>
+            <input class="form-control" disabled type="file" id="formFile" accept="image/*" (change)='cambio_archivo($event)' 
+            formControlName="img">  
+        </div>
+        <img *ngIf="this.evento.img!=null" src="https://api-piltzintli.azurewebsites.net/{{this.evento.img}}" class="card-img-top" alt="..." 
+            onerror="this.src='../../../assets/images/no_image.png'" style="max-width: 20em; max-height: 20em;">
+        <div class="d-grid gap-4 d-md-flex justify-content-md-center">
+            <br>
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid ">Update Event</button>
+            <button type="button" class="btn btn-danger" routerLink='/eventos'>Cancel Changes</button>
+        </div>
+    </form>
+</div>
+<br><br>

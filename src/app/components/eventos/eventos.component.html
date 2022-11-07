@@ -1,0 +1,56 @@
+<br>
+<div class="container animate__animated animate__rotateInDownLeft">
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button style="border-radius: 5em;" class="buttonPerron" routerLink="/nuevo-evento" type="button" [disabled]="logeado==false">Add Event</button>
+        <h4 style="text-align: center;" *ngIf="!logeado"><strong> You need to be logged in order to create, delete or edit an event</strong>
+           <br> <a routerLink='/login'><u> click to Log In</u></a>
+        </h4>
+    </div>
+</div>
+<br>
+<div class="container animate__animated animate__rotateInDownLeft">
+<div class="row">
+    <div class="col-md-4" *ngFor="let evento of this.eventos" style="padding-top: 1.5em;">
+        <div class="card" style="-webkit-box-shadow: 2px 5px 17px 9px #000000; 
+        box-shadow: 2px 5px 17px 6px #04367965;">
+        <!--maximo de imagenes mas-height=30em-->
+            <img src="https://api-piltzintli.azurewebsites.net/{{evento.img.split('/')[2]}}" class="card-img-top" alt="..." 
+            onerror="this.src='../../../assets/images/no_image.png'" style="max-height:30em;">
+            <!--
+            <p>{{evento.img.split("/")[2]}}</p>
+            -->
+            <div class="card-body">
+                <h5 class="card-title"><u><span><strong>Event Name:</strong></span></u>  {{evento.nombre}}</h5>
+                <p class="card-text"><u><span><strong>Description:</strong> </span></u>  {{evento.descripcion}}</p>
+                <p class="card-text"><u><span><strong>Day and Hour:</strong> </span></u>  {{evento.fecha | date:'dd/MM/yyyy h:mm:ss a'}}</p>
+                <p class="card-text"><u><span><strong>Last modification:</strong> </span></u>  {{evento.updatedAt | date:'dd/MM/yyyy h:mm:ss a'}}</p>
+                <p class="card-text"><u><span><strong>Created by:</strong> </span></u>  {{evento.usuario}}</p>
+
+                <div *ngIf="this.tipo_usuario['tipo']=='admi'" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="button" class="btn btn-danger me-md-2"
+                        (click)="eliminar(evento)">Delete</button>
+                    <button type="button" class="btn btn-success me-md-2"
+                        routerLink="/editar-evento/{{evento._id}}">Edit</button>
+                </div>
+                <div *ngIf="this.tipo_usuario['tipo']=='usuario'" class="d-grid gap-3 d-md-flex justify-content-md-end">
+                    <button type="button" disabled class="btn btn-danger me-md-2"
+                        (click)="eliminar(evento)">Delete</button>
+                    <button type="button" disabled class="btn btn-success me-md-2"
+                        routerLink="/editar-evento/{{evento._id}}">Edit</button>
+                </div>
+                <hr>
+                <p *ngIf="this.tipo_usuario['tipo']=='usuario'" style="color: red; text-align: center;">To unlock this actions log in as administrator</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="this.eventos==''">
+        <div class="col"></div>
+        <div class="col">
+            <h2 style="color: #476F80; text-align: center; padding-top: 2em;">THERE ARE NOT EVENTS YET</h2>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+</div>
+<br>

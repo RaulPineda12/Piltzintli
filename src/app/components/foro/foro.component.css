@@ -1,0 +1,82 @@
+.encabezado{
+    font-size: 1.5em;
+}
+
+.img-card{
+  width: 17em;
+  height: auto;
+}
+
+.btn{
+  border-radius: 5em;
+}
+
+.buttonPerron {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #4f8cd1;
+  background: linear-gradient(90deg, rgb(3, 109, 180) 0%, rgb(93, 198, 247) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 10px 10px 20px rgba(32, 147, 255, 0.527);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+  }
+
+.buttonPerron::before {
+  content: '';
+  border-radius: 1000px;
+  min-width: calc(350px + 12px);
+  min-height: calc(30px + 12px);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 60px rgb(255, 255, 255);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.buttonPerron:hover, .buttonPerron:focus {
+  transform: translateY(-6px);
+}
+
+
+.buttonPerron::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #00b7ff;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+.buttonPerron:hover::after, .buttonPerron:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}

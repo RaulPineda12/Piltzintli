@@ -1,0 +1,26 @@
+<br>
+<div class="container animate__animated animate__rollIn">
+
+    <form [formGroup]='form' (ngSubmit)='agregar()'>
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Titulo ó Pregunta</label>
+            <div id="titulo" class="form-text">(El titulo ó pregunta debe estar conformado por al menos 5 caracteres)</div>
+            <input type="text" class="form-control" id="titulo"  formControlName='titulo'>
+        </div>
+        <div class="mb-3">
+            <label for="texto" class="form-label">Texto</label>
+            <div id="texto" class="form-text">(El texto debe estar conformado por al menos 5 caracteres)</div>
+            <textarea rows=8 class="form-control" placeholder="Ingrese su texto" id="texto" formControlName='texto'></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Seleccione una imagen</label>
+            <div id="formfile" class="form-text">(Opcional)</div>
+            <input class="form-control" type="file" id="formFile" accept="image/*" (change)='cambio_archivo($event)' 
+            formControlName="img">  
+        </div>
+        <div class="d-grid gap-2 d-md-flex ">
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid ">Create</button>
+            <button type="button" class="btn btn-danger" routerLink='/foro'>Cancel</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,6 @@
+@import url("../intro/intro.component.css");
+
+.titulo{
+    color: #476F80;
+    font-weight: bolder;
+}
