@@ -17,6 +17,7 @@ export class ForoComponent implements OnInit {
   imagen: any;
   imagePath: any;
   tipo_usuario: any;
+  band = true;
 
 
   ngOnInit(): void {
@@ -39,6 +40,9 @@ export class ForoComponent implements OnInit {
   get_Temas() {
     this.service.getTemas().subscribe(async (res) => {
       this.temas = await res;
+      if(this.temas.length >=0 ){
+        this.band=false;
+      }
     });
   }
 

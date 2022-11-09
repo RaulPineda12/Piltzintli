@@ -13,6 +13,7 @@ export class EventosComponent implements OnInit {
   eventos: any
   logeado: boolean;
   tipo_usuario: any;
+  band= true
 
   constructor(public service: DataService, public router: Router) { }
 
@@ -37,6 +38,9 @@ export class EventosComponent implements OnInit {
    getEventos(){
      this.service.get_Eventos().subscribe(async (res)=>{
         this.eventos=await res
+        if(this.eventos.length >=0 ){
+          this.band=false;
+        }
     })
   }
 

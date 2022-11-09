@@ -43,7 +43,11 @@
             </div>
         </div>
     </div>
-    <div class="row" *ngIf="this.eventos==''">
+    <div *ngIf="this.band==true">
+        <app-loading></app-loading>
+    </div>
+
+    <div class="row" *ngIf="this.eventos == ''">
         <div class="col"></div>
         <div class="col">
             <h2 style="color: #476F80; text-align: center; padding-top: 2em;">THERE ARE NOT EVENTS YET</h2>

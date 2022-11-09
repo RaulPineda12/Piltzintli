@@ -21,6 +21,7 @@ import { EditarTemaComponent } from './components/editar-tema/editar-tema.compon
 import { EventosComponent } from './components/eventos/eventos.component';
 import { NuevoEventoComponent } from './components/nuevo-evento/nuevo-evento.component';
 import { EditarEventoComponent } from './components/editar-evento/editar-evento.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EditarEventoComponent } from './components/editar-evento/editar-evento.
     EditarTemaComponent,
     EventosComponent,
     NuevoEventoComponent,
-    EditarEventoComponent
+    EditarEventoComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
