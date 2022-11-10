@@ -14,7 +14,7 @@ import { NuevoEventoComponent } from './components/nuevo-evento/nuevo-evento.com
 import { EditarEventoComponent } from './components/editar-evento/editar-evento.component';
 
 const routes: Routes = [
-  {path: '', component:HomeComponent},
+  {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'intro', component: IntroComponent},
   {path: 'noticias', component: NoticiasComponent},
@@ -27,7 +27,6 @@ const routes: Routes = [
   {path: 'eventos', component: EventosComponent},
   {path: 'nuevo-evento', component: NuevoEventoComponent},
   {path: 'editar-evento/:id', component: EditarEventoComponent},
-  {path: '**', pathMatch:'full', redirectTo: 'intro'}
 ];
 
 
